@@ -1,9 +1,12 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { PortfolioApp } from './PortfolioApp'
+import { VariablesApp } from './VariablesApp'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <PortfolioApp />
+    <VariablesApp
+      title='Anthony Tamayo Ortega'
+      subtitle='Web Developer'
+    />
   </StrictMode>,
 )
