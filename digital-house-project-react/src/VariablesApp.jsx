@@ -15,6 +15,6 @@ VariablesApp.propTypes = {
 }
 
 VariablesApp.defaultProps = {
-    title: 'Curso de React',
-    subtitle: 'Sección de propiedades'
+    title: 'Course from React',
+    subtitle: 'Section from properties'
 }

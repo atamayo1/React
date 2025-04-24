@@ -21,7 +21,7 @@ export const AddTask = ({ addTask }) => {
             <input
                 type="text"
                 name="inputVal"
-                placeholder="Ingrese una tarea"
+                placeholder="Enter new task"
                 value={inputValue}
                 onChange={onInputChange}
             />

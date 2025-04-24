@@ -4,7 +4,7 @@ import { Task } from "./components/Task";
 
 export const TodoApp = () => {
     const arrayObjectos = [
-        { id: 1, name: 'Introducción a React', isDone: true },
+        { id: 1, name: 'Intro to React', isDone: true },
         { id: 2, name: 'Vite', isDone: true },
         { id: 3, name: 'Variables', isDone: true },
         { id: 4, name: 'Map', isDone: false }

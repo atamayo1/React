@@ -10,8 +10,8 @@ export const FetchList = ({ endpoint }) => {
     return (
         <ul>
             {endpoint === 'users'
-                ? items.map((item) => <li key={item.id}>{item.name ?? 'Sin nombre'}</li>)
-                : items.map((item) => <li key={item.id}>{item.body ?? 'Sin body'}</li>)}
+                ? items.map((item) => <li key={item.id}>{item.name ?? 'Without name'}</li>)
+                : items.map((item) => <li key={item.id}>{item.body ?? 'Without body'}</li>)}
         </ul>
     )
 }
