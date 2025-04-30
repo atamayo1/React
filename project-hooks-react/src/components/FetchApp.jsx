@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useFetch } from '../hooks/useFetch'
 
 export const FetchApp = () => {
     const url = 'https://jsonplaceholder.typicode.com/users';
-    const { data, isLoading, errors } = useFetch(url);
+    const { data, isLoading, errors, fetchData } = useFetch();
+
+    useEffect(() => {
+        fetchData(url, 'GET');
+    }, [fetchData, url])
 
     if (isLoading) return <h4>Cargando...</h4>;
     if (!isLoading && errors) return <h4>Ha ocurrido un error: {errors}</h4>
