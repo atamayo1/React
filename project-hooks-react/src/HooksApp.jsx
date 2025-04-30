@@ -1,5 +1,6 @@
 import React from 'react'
 import { CounterApp } from './components/CounterApp'
+import { FormApp } from './components/FormApp'
 
 export const HooksApp = () => {
     return (
@@ -8,6 +9,8 @@ export const HooksApp = () => {
             <button type="button" className="btn btn-danger">Danger</button>
             <hr />
             <CounterApp />
+            <hr />
+            <FormApp />
         </>
     )
 }
