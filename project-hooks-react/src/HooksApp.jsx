@@ -3,6 +3,7 @@ import { CounterComponent } from "./components/CounterComponent"
 import { FetchComponent } from "./components/FetchComponent"
 import { FormComponent } from "./components/FormComponent"
 import { HeavyCalculateComponent } from "./components/HeavyCalculateComponent"
+import { ListTasksComponent } from "./components/ListTasksComponent"
 
 
 export const HooksApp = () => {
@@ -20,6 +21,8 @@ export const HooksApp = () => {
             <HeavyCalculateComponent />
             <hr />
             <CallBackComponent />
+            <hr />
+            <ListTasksComponent />
         </>
     )
 }
