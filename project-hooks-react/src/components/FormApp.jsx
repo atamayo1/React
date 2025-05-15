@@ -1,4 +1,4 @@
-import React from 'react'
+import { useEffect, useRef } from 'react'
 import { useForm } from '../hooks/useForm';
 
 export const FormApp = () => {
@@ -10,10 +10,16 @@ export const FormApp = () => {
     }
     const { username, nickname, email, password, onInputChange } = useForm(initialForm);
 
-    const handlSubmit = () => {
+    const handlSubmit = (event) => {
         event.preventDefault();
         console.log(username, nickname, email, password);
     }
+
+    const focusRef = useRef();
+
+    useEffect(() => {
+        focusRef.current.focus();
+    }, [])
 
     return (
         <>
@@ -21,6 +27,7 @@ export const FormApp = () => {
                 <div className="form-group">
                     <label htmlFor="userName">Username</label>
                     <input
+                        ref={focusRef}
                         name="username"
                         type="text"
                         className="form-control"

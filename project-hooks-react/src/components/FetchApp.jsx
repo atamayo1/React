@@ -7,7 +7,7 @@ export const FetchApp = () => {
 
     useEffect(() => {
         fetchData(url, 'GET');
-    }, [fetchData, url])
+    }, [url])
 
     if (isLoading) return <h4>Cargando...</h4>;
     if (!isLoading && errors) return <h4>Ha ocurrido un error: {errors}</h4>
