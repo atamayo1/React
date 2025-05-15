@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { useForm } from '../hooks/useForm';
 
-export const FormApp = () => {
+export const FormComponent = () => {
     const initialForm = {
         username: 'SergioCode',
         nickname: 'sergio',

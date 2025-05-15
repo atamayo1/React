@@ -1,7 +1,9 @@
-import React from 'react'
-import { CounterApp } from './components/CounterApp'
-import { FormApp } from './components/FormApp'
-import { FetchApp } from './components/FetchApp'
+import { CallBackComponent } from "./components/CallBackComponent"
+import { CounterComponent } from "./components/CounterComponent"
+import { FetchComponent } from "./components/FetchComponent"
+import { FormComponent } from "./components/FormComponent"
+import { HeavyCalculateComponent } from "./components/HeavyCalculateComponent"
+
 
 export const HooksApp = () => {
     return (
@@ -9,11 +11,15 @@ export const HooksApp = () => {
             <h1>App Hooks</h1>
             <button type="button" className="btn btn-warning">Warning</button>
             <hr />
-            <CounterApp />
+            <CounterComponent />
             <hr />
-            <FormApp />
+            <FormComponent />
             <hr />
-            <FetchApp />
+            <FetchComponent />
+            <hr />
+            <HeavyCalculateComponent />
+            <hr />
+            <CallBackComponent />
         </>
     )
 }
