@@ -1,33 +1,9 @@
-import { useReducer } from "react";
 import { useForm } from "../hooks/useForm";
+import { useDispatch, useSelector } from "react-redux";
 
 export const ListTasksComponent = () => {
-    const initialState = [
-        { id: 1, name: 'Explain reducers', finished: false },
-    ]
-
-    const taskReducer = (state = initialState, action = {}) => {
-        switch (action.type) {
-            case '[TASKS] ADD TASK':
-                return [...state, action.payload];
-            case '[TASKS] FINISH TASK':
-                return state.map(task => {
-                    if (task.id === action.payload) {
-                        return {
-                            ...task,
-                            finished: !task.finished
-                        }
-                    } else return task;
-                })
-            case '[TASKS] DELETE TASK':
-                return state.filter(task => task.id !== action.payload);
-            case '[TASKS] DELETE TASKS':
-                return [];
-            default:
-                break;
-        }
-        return state;
-    }
+    const tasks = useSelector(state => state);
+    const dispatch = useDispatch();
 
     const addTask = (event) => {
         event.preventDefault();
@@ -72,7 +48,7 @@ export const ListTasksComponent = () => {
     }
 
     const { task, onInputChange } = useForm({ task: '' });
-    const [state, dispatch] = useReducer(taskReducer, initialState);
+    // const [state, dispatch] = useReducer(taskReducer, initialState);
 
     return (
         <>
@@ -88,7 +64,7 @@ export const ListTasksComponent = () => {
             <hr />
             <ul className="list-group">
                 {
-                    state.map((task) => {
+                    tasks.map((task) => {
                         return (
                             <li className="list-group-item d-flex justify-content-between align-items-center" key={task.id}>
                                 <span>{task.name}</span>
