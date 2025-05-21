@@ -1,40 +1,26 @@
+import { useReducer } from "react";
+import { useForm } from "../hooks/useForm";
+
 export const ListTasksComponent = () => {
     const initialState = [
         { id: 1, name: 'Explain reducers', finished: false },
     ]
 
-    const newTask = { id: 2, name: 'New explain reducers', finished: false };
-
-    const addTask = {
-        type: '[TASKS] ADD TASK',
-        payload: newTask
-    }
-    /* 
-       const taskEdited = { id: 1, name: 'Explain reducers', finished: false };
-   
-      const editTask = {
-           type: '[TASKS] EDIT TASK',
-           payload: taskEdited
-       }
-   
-       const deleteTask = {
-           type: '[TASKS] DELETE TASK',
-       }
-   
-       const deleteTasks = {
-           type: '[TASKS] DELETE TASKS',
-       } */
-
     const taskReducer = (state = initialState, action = {}) => {
         switch (action.type) {
             case '[TASKS] ADD TASK':
                 return [...state, action.payload];
-            case '[TASKS] EDIT TASK':
-                // return [...state, action.payload];
-                break;
+            case '[TASKS] FINISH TASK':
+                return state.map(task => {
+                    if (task.id === action.payload) {
+                        return {
+                            ...task,
+                            finished: !task.finished
+                        }
+                    } else return task;
+                })
             case '[TASKS] DELETE TASK':
-                // return [...state, action.payload];
-                break;
+                return state.filter(task => task.id !== action.payload);
             case '[TASKS] DELETE TASKS':
                 return [];
             default:
@@ -43,12 +29,78 @@ export const ListTasksComponent = () => {
         return state;
     }
 
-    console.log(taskReducer(initialState, addTask))
+    const addTask = (event) => {
+        event.preventDefault();
+        if (task === '') return;
+        const newTask = {
+            id: new Date().getTime(),
+            name: task,
+            finished: false
+        };
+        const action = {
+            type: '[TASKS] ADD TASK',
+            payload: newTask
+        }
+        dispatch(action);
+    }
+
+    const endTask = (id) => {
+        console.log(id)
+        const action = {
+            type: '[TASKS] FINISH TASK',
+            payload: id
+        }
+        dispatch(action);
+    };
+
+    const deleteTask = (id) => {
+        console.log(id)
+        const action = {
+            type: '[TASKS] DELETE TASK',
+            payload: id
+        }
+        dispatch(action);
+    };
+
+    const deleteTasks = () => {
+        console.log('Delete all tasks')
+        const action = {
+            type: '[TASKS] DELETE TASKS',
+            payload: null
+        }
+        dispatch(action);
+    }
+
+    const { task, onInputChange } = useForm({ task: '' });
+    const [state, dispatch] = useReducer(taskReducer, initialState);
 
     return (
         <>
             <h1>List Tasks</h1>
-            {JSON.stringify(taskReducer(initialState, addTask))}
+            <form onSubmit={addTask}>
+                <div className="mb-3">
+                    <label htmlFor="task" className="form-label">Add new task</label>
+                    <input type="text" className="form-control" id="task" name="task" onChange={onInputChange} />
+                </div>
+                <button type="submit" className="btn btn-primary">Add</button>
+                <button type="button" className="btn btn-danger mx-2" onClick={deleteTasks}>Delete all</button>
+            </form>
+            <hr />
+            <ul className="list-group">
+                {
+                    state.map((task) => {
+                        return (
+                            <li className="list-group-item d-flex justify-content-between align-items-center" key={task.id}>
+                                <span>{task.name}</span>
+                                <div>
+                                    <input type="checkbox" value={task.finished} onChange={() => endTask(task.id)} />
+                                    <button className="btn btn-danger m-2" onClick={() => deleteTask(task.id)}>Delete</button>
+                                </div>
+                            </li>
+                        )
+                    })
+                }
+            </ul>
         </>
     )
 }

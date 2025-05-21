@@ -27,7 +27,7 @@ export const FetchComponent = () => {
                 <tbody>
                     {
                         data.map((user) => {
-                            return <tr>
+                            return <tr key={user.id}>
                                 <th scope="row">{user.id}</th>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
