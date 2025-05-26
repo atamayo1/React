@@ -6,6 +6,9 @@ export const MovieApp = () => {
     const apiKey = 'fe25e6d70b2282283825195229c4c625';
     const [search, setSearch] = useState('');
     const [movies, setMovies] = useState([]);
+    const [selectedMovie, setSelectedMovie] = useState(null);
+    const [showDetail, setShowDetail] = useState(false);
+
 
     const handleGetMovies = async () => {
         try {
@@ -29,6 +32,17 @@ export const MovieApp = () => {
         handleGetMovies();
     });
 
+    const handleViewDetail = (movie) => {
+        setSelectedMovie(movie);
+        setShowDetail(true);
+    };
+
+    const handleCloseDetail = () => {
+        setSelectedMovie(null);
+        setShowDetail(false);
+    };
+
+
     return (
         <div className='container'>
             <h1 className='title'>Search of Movies</h1>
@@ -44,11 +58,22 @@ export const MovieApp = () => {
                             <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="" />
                             <h2>{movie.title}</h2>
                             <p>{movie.overview}</p>
+                            <button onClick={() => handleViewDetail(movie)}>View Detail</button>
                         </div>
                     ))
                 }
             </div>
-
+            {showDetail && selectedMovie && (
+                <div className="modal-overlay" onClick={handleCloseDetail}>
+                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                        <button className="modal-close" onClick={handleCloseDetail}>×</button>
+                        <img src={`https://image.tmdb.org/t/p/w500${selectedMovie.backdrop_path}`} alt={selectedMovie.title} />
+                        <h2>{selectedMovie.title}</h2>
+                        <p><strong>Release Date:</strong> {selectedMovie.release_date}</p>
+                        <p>{selectedMovie.overview}</p>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }
