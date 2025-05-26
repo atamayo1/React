@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './MovieApp.css'
 
 export const MovieApp = () => {
-    const urlBase = 'https://api.themoviedb.org/3/search/'; //movie?query=Jack+Reacher&api_key=00f13a2471b9cafa559f3a3206a75f57
+    const urlBase = 'https://api.themoviedb.org/3/search/';
     const apiKey = 'fe25e6d70b2282283825195229c4c625';
     const [search, setSearch] = useState('');
     const [movies, setMovies] = useState([]);
