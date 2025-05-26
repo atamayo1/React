@@ -164,3 +164,80 @@ button:hover {
     border-radius: 10px;
     margin-bottom: 20px;
 }
+
+/* Tema claro por defecto */
+.container.light {
+    background-color: #ffffff;
+    color: #222;
+}
+
+/* Tema oscuro */
+.container.dark {
+    background-color: #121212;
+    color: #f2f2f2;
+}
+
+/* Ajustes para componentes dentro del modo oscuro */
+.container.dark .movie-card {
+    background-color: #1e1e1e;
+    color: #f2f2f2;
+}
+
+.container.dark input[type="text"],
+.container.dark button {
+    background-color: #333;
+    color: #f2f2f2;
+    border: 1px solid #666;
+}
+
+.container.dark .movie-card button {
+    background-color: #333;
+    color: white;
+}
+
+.dark-mode-toggle {
+    background: transparent;
+    color: inherit;
+    border: 2px solid currentColor;
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-mode-toggle:hover {
+    background-color: #461573;
+    color: white;
+}
+
+.container.dark .modal-content {
+    background-color: #1e1e1e;
+    color: #f2f2f2;
+}
+
+.container.dark .modal-close {
+    color: #f2f2f2;
+}
+
+.container.dark form button {
+    background-color: #7c3aed;
+    color: white;
+    border: none;
+}
+
+.container.dark form button:hover {
+    background-color: #5b21b6;
+}
+
+.container.dark h1 {
+    color: #ccc;
+}
+
+.container.dark .movie-card h2 {
+    color: #ccc;
+}
+
+.container.dark .movie-card p {
+    color: #ccc;
+}

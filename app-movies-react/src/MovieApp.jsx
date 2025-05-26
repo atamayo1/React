@@ -8,6 +8,7 @@ export const MovieApp = () => {
     const [movies, setMovies] = useState([]);
     const [selectedMovie, setSelectedMovie] = useState(null);
     const [showDetail, setShowDetail] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(false);
 
 
     const handleGetMovies = async () => {
@@ -42,9 +43,16 @@ export const MovieApp = () => {
         setShowDetail(false);
     };
 
+    const toggleDarkMode = () => {
+        setIsDarkMode(prev => !prev);
+    };
+
 
     return (
-        <div className='container'>
+        <div className={`container ${isDarkMode ? 'dark' : 'light'}`}>
+            <button onClick={toggleDarkMode} className='dark-mode-toggle'>
+                {isDarkMode ? 'Light Mode 🌞' : 'Dark Mode 🌙'}
+            </button>
             <h1 className='title'>Search of Movies</h1>
             <form action="GET" onSubmit={handleSearch}>
                 <input type="text" name="search" placeholder='Enter a movie' onChange={handleInputChange} />
