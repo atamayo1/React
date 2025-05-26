@@ -38,15 +38,14 @@ export const MovieApp = () => {
             </form>
             <div className='movie-list'>
                 {
-                    movies.length > 0
-                        ? movies.map(movie => (
-                            <div className='movie-card' key={movie.id}>
-                                <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="" />
-                                <h2>{movie.title}</h2>
-                                <p>{movie.overview}</p>
-                            </div>
-                        ))
-                        : <p>There are not movies</p>
+                    movies &&
+                    movies.map(movie => (
+                        <div className='movie-card' key={movie.id}>
+                            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="" />
+                            <h2>{movie.title}</h2>
+                            <p>{movie.overview}</p>
+                        </div>
+                    ))
                 }
             </div>
 
